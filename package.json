@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "path": "^0.12.7",
+    "sass": "^1.58.3",
     "vue": "^3.2.45"
   },
   "devDependencies": {
