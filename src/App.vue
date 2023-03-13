@@ -36,27 +36,32 @@ onMounted(() => {
 
 <template>
   <div class="back" :class="page.size">
-    <div class="card left">
-      <div class="profile">
-        <img src="https://q2.qlogo.cn/headimg_dl?dst_uin=1227519153&spec=100&t=1678023672324" class="avatar" />
-        <div class="name">
-          Finley Ge
+    <main>
+      <div class="card left">
+        <div class="profile">
+          <img src="https://q2.qlogo.cn/headimg_dl?dst_uin=1227519153&spec=100&t=1678023672324" class="avatar" />
+          <div class="name">
+            Finley Ge
+          </div>
+        </div>
+        <div class="about">
+          欢迎来到我的小站。
+          <br />
+          Welcome to my tiny site.
+          <br />
+          随便看看。
+          <br />
+          Just take a look~
         </div>
       </div>
-      <div class="about">
-        欢迎来到我的小站。
-        <br />
-        Welcome to my tiny site.
-        <br />
-        随便看看。
-        <br />
-        Just take a look~
+      <div class="card right">
+        <Title head="站点导航" subtitle="Site Navigation" />
+        <Sites :sites="sites" />
       </div>
-    </div>
-    <div class="card right">
-      <Title head="站点导航" subtitle="Site Navigation" />
-      <Sites :sites="sites" />
-    </div>
+    </main>
+    <footer>
+      FinleyGe © 2022 - {{ new Date().getFullYear() }} | 晋ICP备2022008114
+    </footer>
   </div>
 </template>
 
@@ -66,14 +71,32 @@ onMounted(() => {
 .back {
   &.large {
     display: grid;
-    grid-template-columns: 60% 40%;
+    min-height: 100vh;
+    grid-template-rows: 1fr 50px;
     margin-inline: 5%;
     margin-top: 5%;
     margin-bottom: 5%;
     grid-gap: 10px;
 
+    main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 20px;
+      background-color: $background-lightest;
+      height: fit-content;
+      color: $text-dark;
+      padding: 10px;
+      margin: 10px;
+    }
+
     .card {
       padding: 30px;
+      height: fit-content;
 
       &.left {
         background-color: $background-medium;
@@ -117,8 +140,22 @@ onMounted(() => {
   }
 
   &.small {
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
+    margin: 10px;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: 1fr 50px;
+    row-gap: 20px;
+
+    footer {
+      text-align: center;
+      font-size: 15px;
+      background-color: $background-lightest;
+      height: fit-content;
+      color: $text-dark;
+      padding: 10px;
+      margin: 10px;
+    }
 
     .card {
 
@@ -128,7 +165,7 @@ onMounted(() => {
         .profile {
           display: flex;
           padding-inline: 5px;
-          padding-bottom: 10px;
+          padding-block: 10px;
           border-bottom: 1px solid $text-dark;
 
           img {
@@ -140,7 +177,7 @@ onMounted(() => {
           }
 
           .name {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             padding-top: 20px;
             padding-inline: 50px;
           }
