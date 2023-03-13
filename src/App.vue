@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import Page from '@types/page';
+import { onMounted, ref } from 'vue';
+import type { Page } from './types/page';
 import Title from '@components/Title.vue';
 import Sites from '@components/Sites.vue';
-import Site from './types/site';
+import type { Site } from './types/site';
 
 const page = ref<Page>({
   size: 'large',
@@ -15,17 +15,21 @@ const sites = <Site[]>[
     url: "https://blog.f1nley.xyz/"
   },
   {
-    name: "Test",
-    url: "https://blog.f1nley.xyz/"
+    name: "QuickShare",
+    url: "https://qs.f1nley.xyz/"
   }
 ];
 
-addEventListener('resize', () => {
+function handleResize() {
   if (window.innerWidth < 768) {
     page.value.size = 'small';
   } else {
     page.value.size = 'large';
   }
+}
+onMounted(() => {
+  handleResize();
+  window.addEventListener('resize', handleResize);
 });
 
 </script>
@@ -46,7 +50,7 @@ addEventListener('resize', () => {
         <br />
         随便看看。
         <br />
-        Just take a look.
+        Just take a look~
       </div>
     </div>
     <div class="card right">
@@ -117,8 +121,6 @@ addEventListener('resize', () => {
     flex-direction: column;
 
     .card {
-      padding-block: 10px;
-      margin: 20px;
 
       &.left {
         background-color: $background-medium;

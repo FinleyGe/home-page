@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import { defineProps, withDefaults } from "vue";
-import Site from "@types/site";
+// import { withDefaults } from "vue";
+import { Site } from "../types/site";
 
-const props = withDefaults(
-  defineProps<{
-    sites: Site[];
-  }>(), {
-  sites: [<Site>{
-    name: "Baidu",
-    url: "https://www.baidu.com/",
-  },]
-});
+// const props = withDefaults(
+//   defineProps<{
+//     sites: Site[];
+//   }>(), {
+//   sites: [<Site>{
+//     name: "Baidu",
+//     url: "https://www.baidu.com/",
+//     description: "Baidu",
+//     ok: true,
+//   },]
+// });
+const props = defineProps<{
+  sites: Site[];
+}>();
 
 function openSite(site: Site) {
   window.open(site.url);
