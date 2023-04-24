@@ -60,7 +60,8 @@ onMounted(() => {
       </div>
     </main>
     <footer>
-      FinleyGe © 2022 - {{ new Date().getFullYear() }} | 晋ICP备2022008114
+      FinleyGe © 2022 - {{ new Date().getFullYear() }} |
+      <a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备2022008114号-1</a>
     </footer>
   </div>
 </template>
