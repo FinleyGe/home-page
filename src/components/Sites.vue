@@ -1,18 +1,5 @@
 <script setup lang="ts">
-// import { withDefaults } from "vue";
 import { Site } from "../types/site";
-
-// const props = withDefaults(
-//   defineProps<{
-//     sites: Site[];
-//   }>(), {
-//   sites: [<Site>{
-//     name: "Baidu",
-//     url: "https://www.baidu.com/",
-//     description: "Baidu",
-//     ok: true,
-//   },]
-// });
 const props = defineProps<{
   sites: Site[];
 }>();
@@ -60,7 +47,11 @@ function openSite(site: Site) {
 
     &:hover {
       cursor: pointer;
+      transform: scale(1.02);
+      transition: transform 0.2s ease-in-out;
+      transition: background-color, box-shadow 0.4s ease-in-out;
       background-color: $background-light;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     }
 
     .name {

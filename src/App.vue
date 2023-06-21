@@ -32,6 +32,10 @@ onMounted(() => {
   window.addEventListener('resize', handleResize);
 });
 
+function avatarClicked() {
+  alert('啾咪!');
+}
+
 </script>
 
 <template>
@@ -39,7 +43,8 @@ onMounted(() => {
     <main>
       <div class="card left">
         <div class="profile">
-          <img src="https://q2.qlogo.cn/headimg_dl?dst_uin=1227519153&spec=100&t=1678023672324" class="avatar" />
+          <img @click="avatarClicked()" src="https://q2.qlogo.cn/headimg_dl?dst_uin=1227519153&spec=100&t=1678023672324"
+            class="avatar" />
           <div class="name">
             Finley Ge
           </div>
@@ -99,11 +104,39 @@ onMounted(() => {
       padding: 30px;
       height: fit-content;
 
+      @keyframes slidein-left {
+        from {
+          margin-left: -10%;
+          margin-right: 10%;
+        }
+
+        to {
+          margin-left: 0%;
+          margin-right: 0%;
+        }
+      }
+
+      @keyframes slidein-right {
+        from {
+          margin-left: 10%;
+          margin-right: -10%;
+        }
+
+        to {
+          margin-left: 0%;
+          margin-right: 0%;
+        }
+      }
+
       &.left {
         background-color: $background-medium;
         border-radius: 10px;
         min-height: 500px;
         padding-left: 50px;
+
+        animation-duration: 1s;
+        animation-name: slidein-left;
+
 
         .profile {
           display: flex;
@@ -114,23 +147,50 @@ onMounted(() => {
             border-radius: 50%;
             margin-left: 20px;
             margin-right: 20px;
+
+            &:hover {
+              transform: rotate(360deg) scale(1.3);
+              box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+              transition: ease-in-out 1s;
+            }
           }
 
           .name {
             font-size: 2.5rem;
-            padding-top: 20px;
-            padding-inline: 50px;
+            display: flex;
+            align-items: center;
+            font-style: italic;
           }
         }
 
         .about {
-          font-size: 20px;
-          padding-top: 20px;
+          font-size: 1.2em;
+          padding-top: 1em;
           padding-inline: 50px;
+          white-space: nowrap;
+
+          @keyframes slidein-about {
+
+            from {
+              margin-left: -10%;
+              margin-right: 10%;
+            }
+
+            to {
+              margin-left: 0%;
+              margin-right: 0%;
+            }
+
+          }
+
+          animation-name: slidein-about;
+          animation-duration: 5s;
         }
       }
 
       &.right {
+        animation-duration: 1s;
+        animation-name: slidein-right;
         background-color: $background-dark;
         border-radius: 10px;
         min-height: 500px;
