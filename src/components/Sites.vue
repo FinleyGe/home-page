@@ -5,14 +5,19 @@ const props = defineProps<{
 }>();
 
 function openSite(site: Site) {
-  window.open(site.url);
+  if (site.url === "disabled") {
+    return;
+  } else {
+    window.open(site.url);
+  }
 }
 
 </script>
 
 <template>
   <div class="sites">
-    <div class="site" v-for="site in props.sites" @click="openSite(site)">
+    <div class="site" :class="site.url === 'disabled' ? 'disabled' : ''" v-for="site in props.sites"
+      @click="openSite(site)">
       <div class="title">
         <div class="name">
           {{ site.name }}
@@ -45,13 +50,24 @@ function openSite(site: Site) {
     text-align: left;
     align-items: center;
 
+
     &:hover {
+
       cursor: pointer;
       transform: scale(1.02);
       transition: transform 0.2s ease-in-out;
       transition: background-color, box-shadow 0.4s ease-in-out;
       background-color: $background-light;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    &.disabled {
+      background-color: $background-dark;
+      color: $text-medium;
+
+      &:hover {
+        cursor: not-allowed;
+      }
     }
 
     .name {

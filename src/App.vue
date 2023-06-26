@@ -12,11 +12,19 @@ const page = ref<Page>({
 const sites = <Site[]>[
   {
     name: "Finley's Blog",
-    url: "https://blog.f1nley.xyz/"
+    url: "https://blog.f1nley.xyz/post"
   },
   {
     name: "QuickShare",
-    url: "https://qs.f1nley.xyz/"
+    url: "https://qs.f1nley.xyz"
+  },
+  {
+    name: "Collections",
+    url: "disabled"
+  },
+  {
+    name: "About",
+    url: "https://blog.f1nley.xyz"
   }
 ];
 
@@ -222,6 +230,8 @@ function avatarClicked() {
 
       &.left {
         background-color: $background-medium;
+        padding: 20px;
+        border-radius: 10px;
 
         .profile {
           display: flex;
@@ -238,7 +248,8 @@ function avatarClicked() {
           }
 
           .name {
-            font-size: 1.5rem;
+            font-size: 2rem;
+            font-style: italic;
             padding-top: 20px;
             padding-inline: 50px;
           }
@@ -246,13 +257,18 @@ function avatarClicked() {
         }
 
         .about {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           margin: 20px;
           font-size: 20px;
         }
       }
 
       &.right {
+        margin-top: 20px;
         padding-inline: 20px;
+        border-radius: 10px;
         background-color: $background-dark;
       }
     }
