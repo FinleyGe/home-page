@@ -4,7 +4,8 @@ import type { Page } from './types/page';
 import Title from '@components/Title.vue';
 import Sites from '@components/Sites.vue';
 import type { Site } from './types/site';
-
+const uptime = ref<string>('');
+const timer = setInterval(updateTime, 1000);
 const page = ref<Page>({
   size: 'large',
 });
@@ -35,6 +36,18 @@ function handleResize() {
     page.value.size = 'large';
   }
 }
+
+function updateTime() {
+  const startTime = new Date('2022-05-26T00:00:00+08:00');
+  const now = new Date();
+  const diff = now.getTime() - startTime.getTime();
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  uptime.value = `${days}天${hours}小时${minutes}分钟${seconds}秒`;
+}
+
 onMounted(() => {
   handleResize();
   window.addEventListener('resize', handleResize);
@@ -65,6 +78,9 @@ function avatarClicked() {
           随便看看。
           <br />
           Just take a look~
+          <br />
+          本站已运行
+          <span>{{ uptime }}</span>
         </div>
       </div>
       <div class="card right">
