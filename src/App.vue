@@ -4,6 +4,7 @@ import type { Page } from './types/page';
 import Title from '@components/Title.vue';
 import Sites from '@components/Sites.vue';
 import type { Site } from './types/site';
+import MusicPlayer from '@components/MusicPlayer.vue';
 const uptime = ref<string>('');
 const timer = setInterval(updateTime, 1000);
 const page = ref<Page>({
@@ -88,6 +89,7 @@ function avatarClicked() {
         <Sites :sites="sites" />
       </div>
     </main>
+    <music-player />
     <footer>
       FinleyGe © 2022 - {{ new Date().getFullYear() }} |
       <a href="https://beian.miit.gov.cn/" target="_blank">晋ICP备2022008114号-1</a>
@@ -101,7 +103,7 @@ function avatarClicked() {
 .back {
   &.large {
     display: grid;
-    min-height: 100vh;
+    min-height: 90vh;
     grid-template-rows: 1fr 50px;
     margin-inline: 5%;
     margin-top: 5%;
@@ -116,12 +118,10 @@ function avatarClicked() {
 
     footer {
       text-align: center;
-      font-size: 20px;
+      font-size: 12px;
       background-color: $background-lightest;
       height: fit-content;
       color: $text-dark;
-      padding: 10px;
-      margin: 10px;
     }
 
     .card {
@@ -164,6 +164,8 @@ function avatarClicked() {
 
         .profile {
           display: flex;
+          padding-block: 12px;
+          border-bottom: 1px solid #000;
 
           img {
             width: 100px;
@@ -185,6 +187,7 @@ function avatarClicked() {
             align-items: center;
             font-style: italic;
           }
+
         }
 
         .about {
@@ -288,6 +291,14 @@ function avatarClicked() {
         background-color: $background-dark;
       }
     }
+  }
+
+  #player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
   }
 }
 </style>
