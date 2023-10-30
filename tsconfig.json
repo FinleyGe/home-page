@@ -18,6 +18,7 @@
       "@components/*": ["src/components/*"],
       "@types/*": ["src/types/*"],
       "@assets/*": ["src/assets/*"],
+      "@views/*": ["src/views/*"],
     },
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
