@@ -9,18 +9,55 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "skipLibCheck": true,
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@types/*": ["src/types/*"],
-      "@assets/*": ["src/assets/*"],
-      "@views/*": ["src/views/*"],
-    },
+      "@/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@types/*": [
+        "src/types/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@views/*": [
+        "src/views/*"
+      ],
+      "~assets/*": [
+        "src/assets/*"
+      ],
+      "@playground/*": [
+        "src/playground/*"
+      ],
+      "@router/*": [
+        "src/router/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@v2/*": [
+        "src/views/v2/*"
+      ]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

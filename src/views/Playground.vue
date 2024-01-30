@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {NSpace, NCard, NButton, NDivider, NConfigProvider} from "naive-ui";
+import {NSpace, NCard, NButton, NDivider} from "naive-ui";
 import {useRouter} from "vue-router";
 
 const router = useRouter();
@@ -11,38 +11,54 @@ interface Play {
 }
 
 const plays = <Play[]> [{
-    name: 'GetZJUTClassTable',
-    disabled: false,
-    description: 'ZJUT 课表导出'
-  }
-]
+  name: "GetZJUTClassTable",
+  disabled: false,
+  description: "ZJUT 课表导出"
+}
+];
 
 function handleClick(name: string){
-  router.push('/playground/' + name);
+  router.push("/playground/" + name);
 }
+
 </script>
 <template>
-  <n-config-provider lang="zh-CN">
-<div class="base">
-  <header>
-    <h1>Playground</h1>
-  </header>
-  <main>
-    <n-space>
-      <n-card v-for="play in plays">
-        <h3>{{play.name}}</h3>
-        <p>{{play.description}}</p>
-        <n-button :disabled="play.disabled" @click="handleClick(play.name)">go</n-button>
-      </n-card>
-    </n-space>
-    <n-divider/>
-      <n-card>
-        <router-view/>
-      </n-card>
-  </main>
-  <footer></footer>
-</div>
-  </n-config-provider>
+  <div class="base">
+    <header>
+      <h1
+        class="text-black dark:text-gray-50 cursor-pointer w-max mx-auto"
+        @click="router.push('/playground')"
+      >
+        Playground
+      </h1>
+    </header>
+    <main>
+      <n-space>
+        <div
+          v-for="play in plays"
+          :key="play.name"
+          class="container text-black dark:text-gray-50 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg"
+        >
+          <h3>
+            {{ play.name }}
+          </h3>
+          <p>{{ play.description }}</p>
+          <n-button
+            type="primary"
+            :disabled="play.disabled"
+            @click="handleClick(play.name)"
+          >
+            go
+          </n-button>
+        </div>
+      </n-space>
+      <hr class="my-8">
+      <div class="container mx-auto text-black dark:text-gray-50 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+        <router-view />
+      </div>
+    </main>
+    <footer />
+  </div>
 </template>
 
 <style scoped lang="scss">
