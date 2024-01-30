@@ -64,8 +64,10 @@ const router = useRouter();
           </template>
         </n-button>
       </n-space>
-      <router-view />
-      <footer class="text-gray-500 dark:text-gray-400 absolute bottom-0 w-full text-center">
+      <main>
+        <router-view />
+      </main>
+      <footer class="text-gray-500 dark:text-gray-400 bottom-0 w-full text-center">
         FinleyGe © 2022 - {{ new Date().getFullYear() }}
         <br>
         <a
@@ -79,30 +81,7 @@ const router = useRouter();
 </template>
 
 <style scoped lang="scss">
-
-// .base {
-//   min-height: 100vh;
-//
-//   header {
-//     text-align: center;
-//     h1 {
-//       font-size: 2rem;
-//       font-weight: 700;
-//       margin: 0;
-//     }
-//   }
-//
-//   main {
-//     min-height: calc(100vh - 3rem - 2rem);
-//   }
-//
-//   footer {
-//     position: relative;
-//     bottom: 0;
-//     width: 100%;
-//     text-align: center;
-//   }
-//
-// }
-
+main {
+  min-height: calc(100vh - 110px);
+}
 </style>
